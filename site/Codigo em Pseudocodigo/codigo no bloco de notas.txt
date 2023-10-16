@@ -1,0 +1,143 @@
+algoritmo "Cadastro FNViagens"
+
+var
+
+   nomes: vetor[0..10] de caractere
+   cpf: vetor[0..10] de inteiro
+   destino: vetor[0..10] de caractere
+   op, nome: caractere
+   i, j, s: inteiro
+
+
+procedimento inicializa()
+
+inicio
+
+   enquanto op <> "9" faca
+
+      escreval("------------------- Cadastro de Clientes FNViagens-------------------")
+      escreval()
+      escreval("(1) Cadastrar cliente")
+      escreval("(2) Consultar cliente")
+      escreval("(3) Sair")
+      escreval()
+
+      escreva("Opção: ")
+      leia(op)
+
+      se op="1" entao
+         limpatela
+
+         se s=10 entao
+
+            escreval("O limite de vagas foi atingido!")
+         senao
+              cadastrar_cliente()
+         fimse
+      fimse
+
+      se op="2" entao
+         limpatela
+
+         buscar_cliente()
+      fimse
+
+      se op="9" entao
+         para i de 0 ate 10 faca
+            nomes[i] <- "z"
+      fimpara
+         limpatela
+         escreval("-- Nós da FNViagens agradecemos sua preferência! --")
+      fimse
+      fimenquanto
+
+fimprocedimento
+
+procedimento cadastrar_cliente()
+
+inicio
+
+   para i de 0 ate 10 faca
+        se (nomes[i]="") entao
+           escreval("Cadastrar novo cliente")
+           escreval()
+           escreva("-> Nome: ")
+                       leia(nomes[i])
+           escreva("-> CPF (SOMENTE NÚMEROS): ")
+                       leia(cpf[i])
+           escreva("-> Destino: ")
+                       leia(destino[i])
+           escreval()
+           voltar_menu()
+           s <- s + 1
+           limpatela
+        fimse
+   fimpara
+          escreval(" -> Infelizmente não temos mais vagas <-")
+          escreval()
+
+fimprocedimento
+
+procedimento voltar_menu()
+
+inicio
+
+      escreva("Deseja voltar para menu? (s/n)? ")
+                      leia(op)
+      se op="s" entao
+         i <- i + 1
+      limpatela
+               inicializa()
+      senao
+      limpatela
+               cadastrar_cliente()
+   fimse
+fimprocedimento
+
+
+procedimento buscar_cliente()
+
+inicio
+
+   j <- 0
+     escreva("Qual o nome deseja contultar?: ")
+                 leia(nome)
+     escreval()
+               para i de 0 ate 10 faca
+     se (nome=nomes[i]) entao
+         escreval("-> Nome: ", nomes[i])
+         escreval("-> CPF: ", cpf[i])
+         escreval("-> Destino: ", destino[i])
+         escreval()
+                   j <- j + 1
+         fimse
+         fimpara
+
+     se (j = 0) entao
+      escreval("Este cliente não consta em nosso cadastro!")
+      escreval()
+     fimse
+          Voltar_menu2()
+     limpatela
+     fimprocedimento
+
+procedimento voltar_menu2()
+
+inicio
+
+   Escreva("Deseja voltar para o MENU? (s/n")
+                   leia(op)
+   se op="s" entao
+   limpatela
+            inicializa()
+   senao
+   limpatela
+            buscar_cliente()
+   fimse
+   fimprocedimento
+
+inicio
+
+   inicializa()
+
+fimalgoritmo

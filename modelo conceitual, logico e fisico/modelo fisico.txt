@@ -1,0 +1,56 @@
+CREATE TABLE Cliente 
+( 
+ nome VARCHAR(n),  
+ id_cliente INT PRIMARY KEY,  
+ email VARCHAR(n),  
+ telefone VARCHAR(n),  
+ cep VARCHAR(n),  
+ cpf VARCHAR(n),  
+); 
+
+CREATE TABLE Reserva 
+( 
+ valor_reserva INT,  
+ data_reserva INT,  
+ id_reserva INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Compra 
+( 
+ id_compra INT PRIMARY KEY,  
+ data_compra VARCHAR(n),  
+ total_compra FLOAT,  
+ id_reserva INT PRIMARY KEY,  
+ id_cliente FK INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Cliente1 
+( 
+ nome INT,  
+ id_cliente INT PRIMARY KEY,  
+ email INT,  
+ telefone INT,  
+ cep INT,  
+ cpf INT,  
+); 
+
+CREATE TABLE Reserva1 
+( 
+ valor_reserva INT,  
+ data_reserva INT,  
+ id_reserva INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Compra1 
+( 
+ id_compra INT PRIMARY KEY,  
+ data_compra INT,  
+ total_compra INT,  
+ id_reserva INT PRIMARY KEY,  
+ id_cliente INT PRIMARY KEY,  
+); 
+
+ALTER TABLE Compra ADD FOREIGN KEY(id_reserva) REFERENCES Cliente (id_reserva)
+ALTER TABLE Compra ADD FOREIGN KEY(id_cliente FK) REFERENCES Cliente (id_cliente FK)
+ALTER TABLE Compra1 ADD FOREIGN KEY(id_reserva) REFERENCES Reserva1 (id_reserva)
+ALTER TABLE Compra1 ADD FOREIGN KEY(id_cliente) REFERENCES Cliente1 (id_cliente)
